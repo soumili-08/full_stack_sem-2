@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %} Mood Selection {% endblock %}
+
+{% block body %}
+<h1 class="text-center mt-4" style="font-weight: bold;">What's Your Mood Today?</h1>
+
+<div class="container mt-5" style="background: linear-gradient(135deg, #011001, rgb(102, 7, 7));">
+    <div class="row g-4" style="padding-bottom: 12%;">
+        
+        <div class="col-md-4">
+            <div class="card text-center shadow-sm p-4">
+                <h5 class="fw-bold">Now Playing</h5>
+                <a href="{% url 'mood_songs' 'happy' %}" class="btn btn-primary">Happy</a><br>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary">&laquo;</button>
+                    <button class="btn btn-primary">&#10074;&#10074;</button>
+                    <button class="btn btn-primary">&raquo;</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center shadow-sm p-4">
+                <h5 class="fw-bold">Now Playing</h5>
+                <a href="{% url 'mood_songs' 'sad' %}" class="btn btn-primary">Sad</a><br>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary">&laquo;</button>
+                    <button class="btn btn-primary">&#10074;&#10074;</button>
+                    <button class="btn btn-primary">&raquo;</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center shadow-sm p-4">
+                <h5 class="fw-bold">Now Playing</h5>
+                <a href="{% url 'mood_songs' 'energetic' %}" class="btn btn-primary">Energetic</a><br>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary">&laquo;</button>
+                    <button class="btn btn-primary">&#10074;&#10074;</button>
+                    <button class="btn btn-primary">&raquo;</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center shadow-sm p-4">
+                <h5 class="fw-bold">Now Playing</h5>
+                <a href="{% url 'mood_songs' 'romantic' %}" class="btn btn-primary">Romantic</a><br>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary">&laquo;</button>
+                    <button class="btn btn-primary">&#10074;&#10074;</button>
+                    <button class="btn btn-primary">&raquo;</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center shadow-sm p-4">
+                <h5 class="fw-bold">Now Playing</h5>
+                <a href="{% url 'mood_songs' 'chill' %}" class="btn btn-primary">Chill</a><br>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-primary">&laquo;</button>
+                    <button class="btn btn-primary">&#10074;&#10074;</button>
+                    <button class="btn btn-primary">&raquo;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

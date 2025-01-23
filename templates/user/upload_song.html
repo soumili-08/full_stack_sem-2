@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Upload Song{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h2>Upload a New Song</h2>
+    <form action="{% url 'upload_song' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name" class="form-label">Song Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="singer" class="form-label">Singer</label>
+            <input type="text" class="form-control" id="singer" name="singer" required>
+        </div>
+        <div class="mb-3">
+            <label for="movie" class="form-label">Movie</label>
+            <input type="text" class="form-control" id="movie" name="movie" required>
+        </div>
+        <div class="mb-3">
+            <label for="mood" class="form-label">Mood</label>
+                    <select class="form-control" id="mood" name="mood" required>
+                        <option value="Happy">Happy</option>
+                        <option value="Sad">Sad</option>
+                        <option value="Romantic">Romantic</option>
+                        <option value="Energetic">Energetic</option>
+                        <option value="Chill">Chill</option>
+                    </select>
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Song Image</label>
+            <input type="file" class="form-control" id="image" name="image" required>
+        </div>
+        <div class="mb-3">
+            <label for="song" class="form-label">Song File</label>
+            <input type="file" class="form-control" id="song" name="song" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+</div>
+{% endblock %}

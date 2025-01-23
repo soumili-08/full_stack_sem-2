@@ -1,0 +1,82 @@
+
+{% load static %}
+
+{% block body %}
+    <style>
+        body {
+            background-color: #e8e8f8;
+            /* Dark blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 10px;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container {
+            background: linear-gradient(135deg, #011001, rgb(102, 7, 7));
+
+            /* Slightly lighter box color */
+            padding: 50px 60px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-container h1 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .form-container input {
+            display: block;
+            width: 95%;
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            background-color: #f1e2e2;
+            /* Red background for inputs */
+
+        }
+
+        .form-container input::placeholder {
+            color: #0c0b0b;
+        }
+
+        .form-container button {
+            background-color: #3ad01c;
+            /* Darker red for the button */
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .form-container button:hover {
+            background-color: #ebe2e2;
+            /* Lighter red on hover */
+        }
+    </style>
+
+
+    <div class="form-container">
+        <form method="POST">
+            {% csrf_token %}
+            <h1>Login</h1>
+            <input type="text" id="username" name="username" required>
+            <input type="password" id="password" name="password" required>
+            <button>Login</button>
+            <br>
+            <br>
+            <a style="color: rgb(241, 241, 247);" href="{% url 'register' %}">Don't have an Account? Register</a>
+        </form>
+    </div>
+
+{% endblock body %}

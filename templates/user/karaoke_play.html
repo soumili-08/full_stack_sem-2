@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Karaoke: {{ karaoke.name }}{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h2>{{ karaoke.name }}</h2>
+    <img src="/media/{{ karaoke.image }}" class="img-fluid mb-3" alt="{{ karaoke.name }}" style="height: 400px;">
+    <audio controls class="mb-3" style="width: 100%;">
+        <source src="/media/{{ karaoke.background_song }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <pre style="background-color: #f8f9fa; padding: 20px; border-radius: 5px;">
+        {{ karaoke.lyrics }}
+    </pre>
+</div>
+{% endblock %}
+
+
+
+<script>
+    const audio = document.querySelector('audio');
+    const lyrics = document.querySelector('pre').innerText.split('\n');
+    const display = document.querySelector('pre');
+
+    audio.addEventListener('timeupdate', () => {
+        const currentTime = Math.floor(audio.currentTime);
+        const line = lyrics.find(lyric => lyric.startsWith(`[${currentTime}]`));
+        if (line) {
+            display.innerHTML = line.replace(`[${currentTime}]`, '').trim();
+        }
+    });
+</script>

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Singers{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="text-center">All Singers</h1>
+    <ul class="list-group">
+        {% for singer in singers %}
+        <li class="list-group-item">
+            <a href="/songs/{{i.id}}">{{ singer }}</a> <!-- Update link if you need individual singer filtering -->
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

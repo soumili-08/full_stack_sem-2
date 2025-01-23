@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+</head>
+
+<body>
+    <h1>Welcome to the Admin Dashboard</h1>
+
+    <!-- Display the logged-in user's information -->
+    <p>Hello, {{ user.username }}! You are logged in.</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Registration Date: {{ user.date_joined|date:"F j, Y" }}</p>
+    <a href="{% url 'logout' %}">Logout</a>
+
+    <!-- Active Users Table -->
+    <h2>List of All Active Users</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Registration Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for active_user in active_users %}
+            <tr>
+                <td>{{ active_user.username }}</td>
+                <td>{{ active_user.email }}</td>
+                <td>{{ active_user.date_joined|date:"F j, Y" }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">No active users found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Songs Table -->
+    <h2>List of Uploaded Songs</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Song Name</th>
+                <th>Singer</th>
+                <th>Image</th>
+                <th>Song File</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for song in all_songs %}
+            <tr>
+                <td>{{ song.name }}</td>
+                <td>{{ song.singer }}</td>
+                <td>
+                    {% if song.image %}
+                    <img src="{{ song.image.url }}" alt="{{ song.name }}" width="100">
+                    {% else %}
+                    No Image
+                    {% endif %}
+                </td>
+                <td>
+                    {% if song.song %}
+                    <a href="{{ song.song.url }}" download>Download</a>
+                    {% else %}
+                    No Song
+                    {% endif %}
+                </td>
+                <td><a href="{% url 'edit_song' song.id %}">Edit</a></td>
+                <td>
+                    <form action="{% url 'delete_song' song.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No songs found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

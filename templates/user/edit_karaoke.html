@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Edit Karaoke: {{ karaoke.name }}{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h2>Edit Karaoke Song</h2>
+    <form action="{% url 'edit_karaoke' karaoke.id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name" class="form-label">Song Name</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ karaoke.name }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="lyrics" class="form-label">Lyrics</label>
+            <textarea class="form-control" id="lyrics" name="lyrics" rows="6" required>{{ karaoke.lyrics }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="background_song" class="form-label">Background Song</label>
+            <input type="file" class="form-control" id="background_song" name="background_song">
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input type="file" class="form-control" id="image" name="image">
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
+{% endblock %}

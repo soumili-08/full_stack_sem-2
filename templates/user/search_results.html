@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Search Results</h1>
+    <p>
+        {% if query %}
+            Showing results for "<strong>{{ query }}</strong>":
+        {% else %}
+            All Songs:
+        {% endif %}
+    </p>
+    <ul class="list-group">
+        {% for song in results %}
+            <li class="list-group-item">
+                <a href="{% url 'songpost' song.id %}">{{ song.name }}</a> by {{ song.singer }}
+            </li>
+        {% empty %}
+            <li class="list-group-item">No songs found.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

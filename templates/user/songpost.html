@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}All Songs{% endblock %}
+
+{% block body %}
+<div style="padding-bottom: 25%; background: url('/static/images/Brown\ and\ White\ Modern\ Music\ Shop\ Facebook\ Post\ .png');">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="/media/{{song.image}}" alt="..." height="300px" width="400px" style="padding-top: 10%;">
+            </div>
+            <div class="col-md-6">
+                <h2 style="padding-top: 6%; font-weight: 550;color: rgb(235, 241, 235);">Title: {{song.name}}</h2>
+                <h5 style="padding-top: 2%; font-weight: 550;color: rgb(189, 183, 183);">Tags: {{song.tags}}</h5>
+                <h5 style="padding-top: 2%; font-weight: 550;color: rgb(189, 183, 183);;">Movie: {{song.movie}}</h5>
+                <h5 style="padding-top: 2%; font-weight: 550;color: rgb(189, 183, 183);;">Singer: {{song.singer}}</h5>
+                <h5 style="padding-top: 2%; font-weight: 550;color: rgb(189, 183, 183);;">Mood: {{song.mood}}</h5>
+                <audio controls style="padding: 2%;">
+                    <source src="/media/{{song.song}}" type="audio/mp3">
+                </audio>
+                <div style="padding-left: 5%;">
+                    <a href="/media/{{song.song}}"><button>Download Song</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

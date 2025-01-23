@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Karaoke Songs{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h2>Karaoke Songs</h2>
+    <a href="{% url 'upload_karaoke' %}" class="btn btn-success mb-3">Upload Karaoke</a>
+    <div class="row">
+        {% for song in karaoke_songs %}
+        <div class="col-md-4">
+            <div class="card">
+                <img src="/media/{{ song.image }}" class="card-img-top" alt="{{ song.name }}" style="height: 300px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ song.name }}</h5>
+                    <a href="{% url 'karaoke_play' song.id %}" class="btn btn-primary">Play</a>
+                    <a href="{% url 'edit_karaoke' song.id %}" class="btn btn-warning">Edit</a>
+                    <a href="{% url 'delete_karaoke' song.id %}" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+

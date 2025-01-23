@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Song</title>
+</head>
+<body>
+    <h1>Edit Song: {{ song.name }}</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="name">Song Name:</label>
+        <input type="text" id="name" name="name" value="{{ song.name }}"><br>
+
+        <label for="singer">Singer:</label>
+        <input type="text" id="singer" name="singer" value="{{ song.singer }}"><br>
+
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image"><br>
+
+        <label for="song">Song File:</label>
+        <input type="file" id="song" name="song"><br>
+
+        <button type="submit">Save Changes</button>
+    </form>
+
+    <a href="{% url 'admin_dashboard' %}">Cancel</a>
+</body>
+</html>

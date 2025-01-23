@@ -1,0 +1,28 @@
+<!-- mood_songs.html -->
+{% extends "base.html" %}
+
+{% block title %} Songs for {{ mood|title }} Mood {% endblock %}
+
+{% block body %}
+<h2>Songs for {{ mood|title }} Mood</h2>
+<p>Number of songs: {{ songs|length }}</p>
+<div class="container">
+    <div class="row">
+        {% for song in songs %}
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{{ song.image.url }}" class="card-img-top" alt="{{ song.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ song.name }}</h5>
+                    <p class="card-text">By: {{ song.singer }}</p>
+                    <a href="{% url 'songpost' song.id %}" class="btn btn-primary">View Song</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No songs available for this mood.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
